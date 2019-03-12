@@ -61,39 +61,39 @@ namespace fnuc.Tests
         //
         #endregion
 
-        private DatabaseContext context = new DatabaseContext(); 
-        [TestMethod]
-        public void Create()
-        {
-            Category category = new Category
-            {
-                Name = "Meuble"
-            };
-
-            CategoryRepo repo = new CategoryRepo(context);
-            repo.Create(category);
-            Assert.AreEqual(category.Name, repo.Retrieve(1).Name);
-
-            
-        }
-
+        private DatabaseContext context = new DatabaseContext();
         //[TestMethod]
-        //public void update()
+        //public void Create()
         //{
-
-        //    Category category =
+        //    Category category = new Category
         //    {
         //        Name = "Meuble"
         //    };
 
         //    CategoryRepo repo = new CategoryRepo(context);
         //    repo.Create(category);
+        //    repo.
         //    Assert.AreEqual(category.Name, repo.Retrieve(1).Name);
 
 
-        }
+        //}
+
+        //[TestMethod]
+        //public void update()
+        //{
+
+        //    categor
 
 
+        //    CategoryRepo repo = new CategoryRepo(context);
+        //    repo.Create(category);
+        //    Assert.AreEqual(category.Name, repo.Retrieve(1).Name);
+
+
+        //}
 
     }
 }
+
+    
+

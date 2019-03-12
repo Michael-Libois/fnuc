@@ -12,8 +12,8 @@ namespace DAL.Entities
         public int CategoryId { get; set; }
         public string Name { get; set; }
 
-        //[ForeignKey("Parent")]
-        //public int? ParentId { get; set; }
+        [ForeignKey("Parent")]
+        public int? ParentId { get; set; }
         public virtual Category Parent { get; set; }
 
         public virtual ICollection<Category> Children { get; set; }

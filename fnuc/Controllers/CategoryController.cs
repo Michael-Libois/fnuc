@@ -1,4 +1,5 @@
 ﻿using Business;
+using Common.BTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,12 @@ namespace fnuc.Controllers
             CategoryLogic categ = new CategoryLogic();
             return Ok(categ.Retrieve(id));
         }
+
+        //public IHttpActionResult PostCreate(CategoryBTO bto)
+        //{
+        //    CategoryLogic categ = new CategoryLogic();
+        //    return Ok(categ.Create(bto));
+        //}
+
     }
 }
