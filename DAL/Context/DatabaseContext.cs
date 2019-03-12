@@ -20,17 +20,18 @@ namespace DAL.Context
         public virtual DbSet<ShoppingBasket> ShoppingBaskets { get; set; }
         public virtual DbSet<ShoppingProduct> ShoppingProducts { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Category>().
-        //      HasOptional(e => e.Parent).
-        //      WithMany().
-        //      HasForeignKey(m => m.ParentId);
-        //}
+            modelBuilder.Entity<Category>().Property(x => x.ParentId).HasColumnName("ParentId");
+
+            modelBuilder.Entity<Category>()
+                .HasOptional(e => e.Parent)
+                .WithMany()
+                .HasForeignKey(m => m.ParentId);
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
