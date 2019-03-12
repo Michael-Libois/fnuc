@@ -14,7 +14,7 @@ namespace Business.Extensions
         {
             return new Category
             {
-                ParentId = bto.ParentId,
+                //Parent = bto.Parent,
                 Name = bto.Name
             };
         }
@@ -23,7 +23,7 @@ namespace Business.Extensions
         {
             return new CategoryBTO
             {
-                ParentId = categ.ParentId,
+                //Parent = categ.Parent,
                 Name = categ.Name,
                 CategoryId = categ.CategoryId
             };

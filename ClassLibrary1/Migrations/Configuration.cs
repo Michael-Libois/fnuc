@@ -1,4 +1,4 @@
-namespace DAL.Migrations
+namespace ClassLibrary1.Migrations
 {
     using System;
     using System.Data.Entity;
