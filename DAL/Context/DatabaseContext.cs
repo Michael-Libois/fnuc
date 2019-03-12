@@ -20,7 +20,6 @@ namespace DAL.Context
         public virtual DbSet<ShoppingBasket> ShoppingBaskets { get; set; }
         public virtual DbSet<ShoppingProduct> ShoppingProducts { get; set; }
 
-
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);
