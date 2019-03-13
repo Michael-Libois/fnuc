@@ -68,5 +68,23 @@ namespace Business.Extensions
             };
         }
 
+        public static User UserBTOToUser(this UserBTO bto)
+        {
+            return new User
+            {
+                Id = bto.Id,
+                Name = bto.Name
+            };
+        }
+
+        public static UserBTO UserToUserBTO(this User user)
+        {
+            return new UserBTO
+            {
+                Name = user.Name,
+                Id = user.Id
+            };
+        }
+
     }
 }
