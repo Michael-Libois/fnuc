@@ -33,16 +33,25 @@ namespace Business.Extensions
 
         public static Product ProductBTOToProduct(this ProductBTO bto)
         {
-            return new Product
-            {
-                name = bto.name,
-                description = bto.description,
-                price = bto.price,
-                publicationDate = bto.publicationDate,
-                categoryId = (Category)bto.categoryId
+            //return new Product
+            //{
+            //    name = bto.name,
+            //    description = bto.description,
+            //    price = bto.price,
+            //    publicationDate = bto.publicationDate,
+            //    categoryId = (Category)bto.categoryId
+            //   //public int id { get; set; }
+
+            //};
+            Product product = new Product();
+            product.name = bto.name;
+            product.description = bto.description;
+            product.price = bto.price;
+            product.publicationDate = bto.publicationDate;
+            product.category = bto.category.CategoryBTOToCategory();
+
+            return product;
                //public int id { get; set; }
-        
-            };
         }
 
         public static ProductBTO ProductToProductBTO(this Product produc)
@@ -55,7 +64,7 @@ namespace Business.Extensions
                 description = produc.description,
                 price = produc.price,
                 publicationDate = produc.publicationDate,
-                categoryId = produc.categoryId
+                category = produc.category.CategoryToCategoryBTO()
             };
         }
 

@@ -12,7 +12,7 @@ namespace Common.BTO
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public Object categoryId { get; set; }
+        public CategoryBTO category { get; set; }
         public decimal price { get; set; }
         public DateTime publicationDate { get; set; }
 

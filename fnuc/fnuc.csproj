@@ -269,10 +269,6 @@
       <Project>{09078A79-8CAC-4937-A206-04FC0C2C362E}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{069ea36b-b5d6-44cb-8da2-a4b777afa23f}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

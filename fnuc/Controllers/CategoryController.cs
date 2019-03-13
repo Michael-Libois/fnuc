@@ -1,7 +1,5 @@
 ﻿using Business;
 using Common.BTO;
-using DAL.Context;
-using DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
