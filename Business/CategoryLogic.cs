@@ -7,6 +7,7 @@ using Common.BTO;
 using DAL.Context;
 using DAL.Repository;
 using Business.Extensions;
+using DAL.UnitOfWork;
 
 namespace Business
 {
@@ -27,23 +28,52 @@ namespace Business
             return bto;
         }
 
+        public CategoryBTO FillChildrenRec(CategoryBTO CategorieToFindChildren)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            var ChildrenOfCategorie =
+                unitOfWork.CategoryRepo.RetrieveChildren(CategorieToFindChildren.Id)
+                    .Select(x => x.CategoryToCategoryBTO()).ToList();
+
+
+            if (ChildrenOfCategorie.Count()>0)
+            {
+                CategorieToFindChildren.subCategories = new List<CategoryBTO>();
+
+                foreach (var ChildToFindChildren in ChildrenOfCategorie)
+                {
+                    CategorieToFindChildren.subCategories.Add(FillChildrenRec(ChildToFindChildren));
+                }
+            }
+            else
+                CategorieToFindChildren.subCategories = null;
+
+            return CategorieToFindChildren;
+        }
+
         //Read
         public CategoryBTO Retrieve(int id)
         {
-            using (CategoryRepo repo = new CategoryRepo(context))
-            {
-                var obj = repo.Retrieve(id);
+            UnitOfWork unitOfWork = new UnitOfWork(context);
 
-                //return Ok(JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })) ;
+            var response = unitOfWork.CategoryRepo.Retrieve(id).CategoryToCategoryBTO();
+
+            response = FillChildrenRec(response);
+
+            return (response == null) ? null : response;
+
+            //using (CategoryRepo repo = new CategoryRepo(context))
+            //{
+            //    var obj = repo.Retrieve(id);
 
 
+            //    var Response = obj.CategoryToCategoryBTO();
+            //    Response.subCategories = repo.RetrieveChildren(id)
+            //        .Select(x => x.CategoryToCategoryBTO()).ToList();
 
-                var Response = obj.CategoryToCategoryBTO();
-                Response.subCategories = repo.RetrieveChildren(id)
-                    .Select(x => x.CategoryToCategoryBTO()).ToList();
-
-                return Response;
-            }
+            //    return Response;
+            //}
         }
 
         //ReadAll
