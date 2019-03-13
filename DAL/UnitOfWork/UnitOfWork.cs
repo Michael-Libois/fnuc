@@ -19,10 +19,7 @@ namespace DAL.UnitOfWork
 
         public UnitOfWork(DatabaseContext DatabaseContext)
         {
-
             _datebaseContext = DatabaseContext;
-
-
         }
 
         public CategoryRepo CategoryRepo

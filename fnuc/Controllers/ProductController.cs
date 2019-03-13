@@ -28,10 +28,10 @@ namespace fnuc.Controllers
 
         public IHttpActionResult Post(ProductBTO productBto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest("Not a valid model");
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest("Not a valid model");
+            //}
 
             ProductLogic categ = new ProductLogic();
             var model = categ.Create(productBto);

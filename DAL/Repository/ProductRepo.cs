@@ -22,8 +22,11 @@ namespace DAL.Repository
 
         public Product Create(Product obj)
         {
+            //TODO
+            obj.category = dbContext.Categories.FirstOrDefault(x=>x.CategoryId == obj.category.CategoryId);
+
             dbContext.Products.Add(obj);
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
             return obj;
         }
 
@@ -64,7 +67,7 @@ namespace DAL.Repository
             Product product = Retrieve(obj.id);
             product.name = obj.name;
             product.description = obj.description;
-            product.categoryId = obj.categoryId;
+            product.category = obj.category;
             product.price = obj.price;
             product.publicationDate = obj.publicationDate;
             dbContext.SaveChanges();
