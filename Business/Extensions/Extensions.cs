@@ -48,7 +48,9 @@ namespace Business.Extensions
             product.description = bto.description;
             product.price = bto.price;
             product.publicationDate = bto.publicationDate;
+            product.categoryId = bto.categoryId;
             product.category = bto.category.CategoryBTOToCategory();
+
 
             return product;
                //public int id { get; set; }
@@ -64,6 +66,7 @@ namespace Business.Extensions
                 description = produc.description,
                 price = produc.price,
                 publicationDate = produc.publicationDate,
+                categoryId = produc.categoryId,
                 category = produc.category.CategoryToCategoryBTO()
             };
         }
