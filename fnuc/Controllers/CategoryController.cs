@@ -45,6 +45,11 @@ namespace fnuc.Controllers
         //        return Ok(obj);
         //    }
         //}
+        public IHttpActionResult GetAll()
+        {
+            CategoryLogic categ = new CategoryLogic();
+            return Ok(categ.RetrieveAll());
+        }
 
         public IHttpActionResult GetById(int idParent)
         {
@@ -70,6 +75,8 @@ namespace fnuc.Controllers
             return Ok(categ.Retrieve(idParent));
 
         }
+
+
 
 
 

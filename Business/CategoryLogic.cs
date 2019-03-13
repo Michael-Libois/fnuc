@@ -62,18 +62,20 @@ namespace Business
             response = FillChildrenRec(response);
 
             return (response == null) ? null : response;
+        }
 
-            //using (CategoryRepo repo = new CategoryRepo(context))
-            //{
-            //    var obj = repo.Retrieve(id);
+        public List<CategoryBTO> RetrieveAll()
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+            List<CategoryBTO> Listbto = new List<CategoryBTO>();
 
+            foreach (var item in unitOfWork.CategoryRepo.RetrieveAll().Where(x=>x.ParentId==null))
+            {
+                CategoryBTO btoToAdd = this.Retrieve(item.CategoryId);
+                Listbto.Add(btoToAdd);
+            }
 
-            //    var Response = obj.CategoryToCategoryBTO();
-            //    Response.subCategories = repo.RetrieveChildren(id)
-            //        .Select(x => x.CategoryToCategoryBTO()).ToList();
-
-            //    return Response;
-            //}
+            return Listbto;
         }
 
         //ReadAll
