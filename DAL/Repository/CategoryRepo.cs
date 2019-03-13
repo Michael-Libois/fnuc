@@ -50,10 +50,11 @@ namespace DAL.Repository
         {
             return dbContext.Categories.FirstOrDefault(u => u.CategoryId == id);
         }
+
         public Category[] RetrieveChildren(int id)
-        {
-            return dbContext.Categories.Where(u => u.ParentId == id).ToArray();
-        }
+            => dbContext.Categories
+                    .Where(u => u.ParentId == id)
+                    .ToArray();
 
         public Category Retrieve(string id)
         {
