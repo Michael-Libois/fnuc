@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BTO\CategoryBTO.cs" />
     <Compile Include="BTO\ProductBTO.cs" />
+    <Compile Include="BTO\UserBTO.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="interfaces\Irepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

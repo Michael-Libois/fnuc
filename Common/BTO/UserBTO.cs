@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Common.BTO
 {
-    class UserBTO
+    public class UserBTO
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
