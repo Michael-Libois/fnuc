@@ -26,48 +26,49 @@ namespace fnuc.Controllers
         //    return Ok(categ.Retrieve(id));
         //}
 
-        public IHttpActionResult GetById(int id)
+        //public IHttpActionResult GetById(int id)
+        //{
+        //    using (CategoryRepo repo = new CategoryRepo(context))
+        //    {
+        //        //De la Logique... 
+        //        var obj = repo.Retrieve(id);
+
+        //        //return Ok(JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })) ;
+
+        //        //var temp = JsonConvert.SerializeObject(obj,
+        //        //    Formatting.Indented,
+        //        //    new JsonSerializerSettings()
+        //        //    {
+        //        //        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        //        //    });
+
+        //        return Ok(obj);
+        //    }
+        //}
+
+        public IHttpActionResult GetById(int idParent)
         {
-            using (CategoryRepo repo = new CategoryRepo(context))
-            {
-                //De la Logique... 
-                var obj = repo.Retrieve(id);
+            //using (CategoryRepo repo = new CategoryRepo(context))
+            //{
+            //    //De la Logique... 
+            //    var obj = repo.Retrieve(idParent);
 
-                //return Ok(JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })) ;
+            //    //return Ok(JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })) ;
 
-                var temp = JsonConvert.SerializeObject(obj,
-                    Formatting.Indented,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+            //    //var temp = JsonConvert.SerializeObject(obj,
+            //    //    Formatting.Indented,
+            //    //    new JsonSerializerSettings()
+            //    //    {
+            //    //        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            //    //    });
 
-                return Ok(obj);
-            }
-        }
+            //    var Response = obj.CategoryToCategoryBTO();
+            //    Response.Children = repo.RetrieveChildren(idParent)
+            //        .Select(x => x.CategoryToCategoryBTO()).ToList();
 
-        public IHttpActionResult GetByIdWithChildren(int idParent)
-        {
-            using (CategoryRepo repo = new CategoryRepo(context))
-            {
-                //De la Logique... 
-                var obj = repo.Retrieve(idParent);
+            CategoryLogic categ = new CategoryLogic();
+            return Ok(categ.Retrieve(idParent));
 
-                //return Ok(JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })) ;
-
-                var temp = JsonConvert.SerializeObject(obj,
-                    Formatting.Indented,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
-
-                var Response = obj.CategoryToCategoryBTO();
-                Response.Children = repo.RetrieveChildren(idParent)
-                    .Select(x => x.CategoryToCategoryBTO()).ToList();
-
-                return Ok(Response);
-            }
         }
 
 

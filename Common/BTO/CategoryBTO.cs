@@ -8,9 +8,9 @@ namespace Common.BTO
 {
     public class CategoryBTO
     {
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
-        public List<CategoryBTO> Children { get; set; }
+        public List<CategoryBTO> subCategories { get; set; }
     }
 }

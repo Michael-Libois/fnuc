@@ -32,9 +32,17 @@ namespace Business
         {
             using (CategoryRepo repo = new CategoryRepo(context))
             {
-                //De la Logique... 
+                var obj = repo.Retrieve(id);
 
-                return repo.Retrieve(id).CategoryToCategoryBTO();
+                //return Ok(JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })) ;
+
+
+
+                var Response = obj.CategoryToCategoryBTO();
+                Response.subCategories = repo.RetrieveChildren(id)
+                    .Select(x => x.CategoryToCategoryBTO()).ToList();
+
+                return Response;
             }
         }
 
