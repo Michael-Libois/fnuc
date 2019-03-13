@@ -10,6 +10,8 @@ namespace DAL.UnitOfWork
 {
     public class UnitOfWork
     {
+        private ShoppingBasketRepo _shoppingBasketRepo;
+        private ShoppingProductRepo _shoppingProductRepo;
         private CategoryRepo _categoryRepo;
         private ProductRepo _productRepo;
         private DatabaseContext _datebaseContext;
@@ -43,6 +45,33 @@ namespace DAL.UnitOfWork
                     _productRepo = new ProductRepo(_datebaseContext);
                 }
                 return _productRepo;
+            }
+
+        }
+
+        public ShoppingBasketRepo ShoppingBasketRepo
+        {
+            get
+            {
+                if (_shoppingBasketRepo == null)
+                {
+                    _shoppingBasketRepo = new ShoppingBasketRepo(_datebaseContext);
+                }
+                return _shoppingBasketRepo;
+            }
+
+        }
+
+
+        public ShoppingProductRepo ShoppingProductRepo
+        {
+            get
+            {
+                if (_shoppingProductRepo == null)
+                {
+                    _shoppingProductRepo = new ShoppingProductRepo(_datebaseContext);
+                }
+                return _shoppingProductRepo;
             }
 
         }
