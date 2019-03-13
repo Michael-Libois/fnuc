@@ -23,7 +23,7 @@ namespace DAL.Repository
         public Category Create(Category obj)
         {
             dbContext.Categories.Add(obj);
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
             return obj;
         }
 
@@ -31,14 +31,14 @@ namespace DAL.Repository
         {
             Category category = Retrieve(id);
             dbContext.Categories.Remove(category);
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
         }
 
         public void Delete(string id)
         {
             Category category = Retrieve(id);
             dbContext.Categories.Remove(category);
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
         }
 
         public void Dispose()
@@ -68,15 +68,11 @@ namespace DAL.Repository
 
         public void Update(Category obj)
         {
-
             Category category = Retrieve(obj.CategoryId);
             category.Name = obj.Name;
-            category.Parent = obj.Parent;
+            category.ParentId = obj.ParentId;
             //category.ParentId = obj.ParentId;
-            dbContext.SaveChanges();
-
-
-
+            //dbContext.SaveChanges();
         }
     }
 }

@@ -18,14 +18,10 @@ namespace Business
         //Create 
         public CategoryBTO Create(CategoryBTO bto)
         {
-            using (CategoryRepo repo = new CategoryRepo(context))
-            {
-                //De la Logique... 
-
-                repo.Create(bto.CategoryBTOToCategory());
-            }
-
-            return bto;
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+            var response = unitOfWork.CategoryRepo.Create(bto.CategoryBTOToCategory());
+            unitOfWork.Save();
+            return response.CategoryToCategoryBTO();
         }
 
         public CategoryBTO FillChildrenRec(CategoryBTO CategorieToFindChildren)
@@ -64,6 +60,7 @@ namespace Business
             return (response == null) ? null : response;
         }
 
+        //ReadAll
         public List<CategoryBTO> RetrieveAll()
         {
             UnitOfWork unitOfWork = new UnitOfWork(context);
@@ -78,11 +75,23 @@ namespace Business
             return Listbto;
         }
 
-        //ReadAll
 
         //Update
+        public void Update(CategoryBTO existingCateg)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.CategoryRepo.Update(existingCateg.CategoryBTOToCategory());
+            unitOfWork.Save();
+        }
+
+
 
         //Delete
-
+        public void Delete(int id)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+            unitOfWork.CategoryRepo.Delete(id);
+            unitOfWork.Save();
+        }
     }
 }

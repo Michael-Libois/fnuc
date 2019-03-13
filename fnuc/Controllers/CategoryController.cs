@@ -16,7 +16,7 @@ namespace fnuc.Controllers
 {
     public class CategoryController : ApiController
     {
-        private DatabaseContext context = new DatabaseContext();
+        //private DatabaseContext context = new DatabaseContext();
 
 
         ///api/Category/?id=1
@@ -74,6 +74,56 @@ namespace fnuc.Controllers
             CategoryLogic categ = new CategoryLogic();
             return Ok(categ.Retrieve(idParent));
 
+        }
+
+        public IHttpActionResult Post(CategoryBTO categBto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Not a valid model");
+            }
+
+            CategoryLogic categ = new CategoryLogic();
+            var model = categ.Create(categBto);
+
+            return CreatedAtRoute("DefaultApi", new { id = model.Id }, model);
+        }
+
+        public IHttpActionResult Put(CategoryBTO categBto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Not a valid model");
+            }
+
+            CategoryLogic categ = new CategoryLogic();
+            var existingCateg = categ.Retrieve(categBto.Id);
+
+            if (existingCateg != null)
+            {
+                categ.Update(categBto);
+            }
+            else return NotFound();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            {
+                if (id <= 0)
+                    return BadRequest("Not a valid category id");
+
+                //using (DishRepo repo = new DishRepo(databaseContext))
+                //{
+                //    repo.Delete(id);
+                //}
+
+                CategoryLogic categ = new CategoryLogic();
+                categ.Delete(id);
+
+                return Ok("This category is deleted");
+            }
         }
 
 
