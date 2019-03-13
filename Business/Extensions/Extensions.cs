@@ -26,5 +26,33 @@ namespace Business.Extensions
                 Id = categ.CategoryId
             };
         }
+
+
+        public static Product ProductBTOToProduct(this ProductBTO bto)
+        {
+            return new Product
+            {
+                name = bto.name,
+                description = bto.description,
+                price = bto.price,
+                publicationDate = bto.publicationDate
+               //public int id { get; set; }
+        
+            };
+        }
+
+        public static ProductBTO ProductToProductBTO(this Product produc)
+        {
+            return new ProductBTO
+            {
+                //Parent = categ.Parent,
+                name = produc.name,
+                id = produc.id,
+                description = produc.description,
+                price = produc.price,
+                publicationDate = produc.publicationDate
+            };
+        }
+
     }
 }
