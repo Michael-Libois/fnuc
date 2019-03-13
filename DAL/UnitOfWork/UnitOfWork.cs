@@ -14,16 +14,18 @@ namespace DAL.UnitOfWork
         private ShoppingProductRepo _shoppingProductRepo;
         private CategoryRepo _categoryRepo;
         private ProductRepo _productRepo;
+        private UserRepo _userRepo;
         private DatabaseContext _datebaseContext;
 
-        public UnitOfWork(DatabaseContext DatabaseContext) {
+        public UnitOfWork(DatabaseContext DatabaseContext)
+        {
 
             _datebaseContext = DatabaseContext;
 
 
         }
 
-    public CategoryRepo CategoryRepo
+        public CategoryRepo CategoryRepo
         {
             get
             {
@@ -72,6 +74,18 @@ namespace DAL.UnitOfWork
                     _shoppingProductRepo = new ShoppingProductRepo(_datebaseContext);
                 }
                 return _shoppingProductRepo;
+            }
+
+        }
+        public UserRepo UserRepo
+        {
+            get
+            {
+                if (_userRepo == null)
+                {
+                    _userRepo = new UserRepo(_datebaseContext);
+                }
+                return _userRepo;
             }
 
         }

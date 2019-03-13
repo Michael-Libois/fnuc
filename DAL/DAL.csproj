@@ -65,6 +65,7 @@
     <Compile Include="Repository\ProductRepo.cs" />
     <Compile Include="Repository\ShoppingBasketRepo.cs" />
     <Compile Include="Repository\ShoppingProductRepo.cs" />
+    <Compile Include="Repository\UserRepo.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
