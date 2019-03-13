@@ -4,6 +4,7 @@ using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,10 @@ namespace DAL.Repository
         {
             return dbContext.Categories.FirstOrDefault(u => u.CategoryId == id);
         }
+        public Category[] RetrieveChildren(int id)
+        {
+            return dbContext.Categories.Where(u => u.ParentId == id).ToArray();
+        }
 
         public Category Retrieve(string id)
         {
@@ -70,7 +75,7 @@ namespace DAL.Repository
             dbContext.SaveChanges();
 
 
-           
+
         }
     }
 }

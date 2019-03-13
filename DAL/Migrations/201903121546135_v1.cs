@@ -3,7 +3,7 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class v1 : DbMigration
     {
         public override void Up()
         {
@@ -14,13 +14,10 @@ namespace DAL.Migrations
                         CategoryId = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         ParentId = c.Int(),
-                        Category_CategoryId = c.Int(),
                     })
                 .PrimaryKey(t => t.CategoryId)
-                .ForeignKey("dbo.Categories", t => t.Category_CategoryId)
                 .ForeignKey("dbo.Categories", t => t.ParentId)
-                .Index(t => t.ParentId)
-                .Index(t => t.Category_CategoryId);
+                .Index(t => t.ParentId);
             
             CreateTable(
                 "dbo.Products",
@@ -81,12 +78,10 @@ namespace DAL.Migrations
             DropForeignKey("dbo.ShoppingProducts", "productId_id", "dbo.Products");
             DropForeignKey("dbo.Products", "categoryId_CategoryId", "dbo.Categories");
             DropForeignKey("dbo.Categories", "ParentId", "dbo.Categories");
-            DropForeignKey("dbo.Categories", "Category_CategoryId", "dbo.Categories");
             DropIndex("dbo.ShoppingProducts", new[] { "ShoppingBasketId_id" });
             DropIndex("dbo.ShoppingProducts", new[] { "productId_id" });
             DropIndex("dbo.ShoppingBaskets", new[] { "userId_Id" });
             DropIndex("dbo.Products", new[] { "categoryId_CategoryId" });
-            DropIndex("dbo.Categories", new[] { "Category_CategoryId" });
             DropIndex("dbo.Categories", new[] { "ParentId" });
             DropTable("dbo.Users");
             DropTable("dbo.ShoppingProducts");

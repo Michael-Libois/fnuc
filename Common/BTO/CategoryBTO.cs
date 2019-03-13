@@ -11,10 +11,6 @@ namespace Common.BTO
         public int CategoryId { get; set; }
         public string Name { get; set; }
 
-        //public int? ParentId { get; set; }
-        //public virtual Category Parent { get; set; }
-
-        //public virtual List<Category> Children { get; set; }
-        //public virtual List<Product> Products { get; set; }
+        public List<CategoryBTO> Children { get; set; }
     }
 }
