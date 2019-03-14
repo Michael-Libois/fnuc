@@ -54,7 +54,7 @@ namespace fnuc.Controllers
             CategoryLogic categ = new CategoryLogic();
             return Ok(categ.RetrieveAllWithChildren());
         }
-        [Route("all")]
+        [Route("all")] 
         [HttpGet]
         public IHttpActionResult GetAll()
         {
