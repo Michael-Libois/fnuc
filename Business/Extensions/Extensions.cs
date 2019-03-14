@@ -43,6 +43,7 @@ namespace Business.Extensions
             //   //public int id { get; set; }
 
             //};
+            bto.publicationDate = DateTime.Now;
             Product product = new Product();
             product.name = bto.name;
             product.description = bto.description;

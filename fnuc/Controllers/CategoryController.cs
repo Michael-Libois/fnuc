@@ -47,7 +47,7 @@ namespace fnuc.Controllers
         //        return Ok(obj);
         //    }
         //}
-        [Route("all")]
+        [Route("")]
         [HttpGet]
         public IHttpActionResult GetAllWithChildren()
         {
@@ -56,7 +56,7 @@ namespace fnuc.Controllers
         }
 
         //flat
-        [Route("")] 
+        [Route("all")] 
         [HttpGet]
         public IHttpActionResult GetAll()
         {

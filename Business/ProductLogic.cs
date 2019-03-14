@@ -78,6 +78,30 @@ namespace Business
 
             //}
         }
+        public List<ProductBTO> RetrieveAllByCateg(int id)
+        {
+
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            List<ProductBTO> Listbto = new List<ProductBTO>();
+
+            foreach (var item in unitOfWork.ProductRepo.RetrieveAll().Where(x=>x.categoryId == id))
+            {
+                ProductBTO btoToAdd = this.Retrieve(item.id);
+                Listbto.Add(btoToAdd);
+            }
+
+            return Listbto;
+
+
+
+            //using (ProductRepo repo = new ProductRepo(context))
+            //{
+            //    //De la Logique... 
+            //    return RetrieveAll();
+
+            //}
+        }
         //Update
 
         public void Update(ProductBTO existingCateg)
