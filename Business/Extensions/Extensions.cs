@@ -20,7 +20,7 @@ namespace Business.Extensions
             };
         }
 
-        public static CategoryBTO CategoryToCategoryBTO( this Category categ)
+        public static CategoryBTO CategoryToCategoryBTO(this Category categ)
         {
             return new CategoryBTO
             {
@@ -53,7 +53,7 @@ namespace Business.Extensions
 
 
             return product;
-               //public int id { get; set; }
+            //public int id { get; set; }
         }
 
         public static ProductBTO ProductToProductBTO(this Product produc)
@@ -107,5 +107,32 @@ namespace Business.Extensions
             };
         }
 
+        public static ShoppingProduct ShoppingProductBTOToShoppingProduct(this ShoppingProductBTO bto)
+        {
+            return new ShoppingProduct
+            {
+                id = bto.Id,
+                productId = bto.ProductId.ProductBTOToProduct(),
+                quantity = bto.quantity,
+                ShoppingBasketId = bto.ShoppingBasketId.ShoppingBasketBTOToShoppingBasket()
+
+                
+            };
+
+        
+
+        }
+        public static ShoppingProductBTO ShoppingProductToShoppingProductBTO(this ShoppingProduct shoppingProduct)
+        {
+            return new ShoppingProductBTO
+            {
+
+                Id = shoppingProduct.id,
+                ProductId = shoppingProduct.productId.ProductToProductBTO(),
+                quantity = shoppingProduct.quantity,
+                ShoppingBasketId = shoppingProduct.ShoppingBasketId.ShoppingBasketToShoppingBasketBTO()
+                
+            };
+        }
     }
 }
