@@ -29,7 +29,7 @@ namespace Business
             UnitOfWork unitOfWork = new UnitOfWork(context);
 
             var ChildrenOfCategorie =
-                unitOfWork.CategoryRepo.RetrieveChildren(CategorieToFindChildren.Id)
+                unitOfWork.CategoryRepo.RetrieveChildren(CategorieToFindChildren.id)
                     .Select(x => x.CategoryToCategoryBTO()).ToList();
 
 

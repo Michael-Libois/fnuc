@@ -47,14 +47,16 @@ namespace fnuc.Controllers
         //        return Ok(obj);
         //    }
         //}
-        [Route("")]
+        [Route("all")]
         [HttpGet]
         public IHttpActionResult GetAllWithChildren()
         {
             CategoryLogic categ = new CategoryLogic();
             return Ok(categ.RetrieveAllWithChildren());
         }
-        [Route("all")] 
+
+        //flat
+        [Route("")] 
         [HttpGet]
         public IHttpActionResult GetAll()
         {
@@ -99,7 +101,7 @@ namespace fnuc.Controllers
             CategoryLogic categ = new CategoryLogic();
             var model = categ.Create(categBto);
 
-            return CreatedAtRoute("DefaultApi", new { id = model.Id }, model);
+            return CreatedAtRoute("DefaultApi", new { id = model.id }, model);
         }
 
         public IHttpActionResult Put(CategoryBTO categBto)
@@ -110,7 +112,7 @@ namespace fnuc.Controllers
             }
 
             CategoryLogic categ = new CategoryLogic();
-            var existingCateg = categ.Retrieve(categBto.Id);
+            var existingCateg = categ.Retrieve(categBto.id);
 
             if (existingCateg != null)
             {
