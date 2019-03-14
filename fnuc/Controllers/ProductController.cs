@@ -25,7 +25,7 @@ namespace fnuc.Controllers
         {
             
             ProductLogic categ = new ProductLogic();
-            return Ok(categ.Retrieve(id));
+            return Ok(categ.Retrieve(id==1?9:id));
 
         }
 

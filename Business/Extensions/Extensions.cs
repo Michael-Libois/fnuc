@@ -58,17 +58,20 @@ namespace Business.Extensions
 
         public static ProductBTO ProductToProductBTO(this Product produc)
         {
-            return new ProductBTO
-            {
-                //Parent = categ.Parent,
-                name = produc.name,
-                id = produc.id,
-                description = produc.description,
-                price = produc.price,
-                publicationDate = produc.publicationDate,
-                categoryId = produc.categoryId,
-                //category = produc.category.CategoryToCategoryBTO()
-            };
+            if (produc == null) return new ProductBTO();
+
+                return new ProductBTO
+                {
+                    //Parent = categ.Parent,
+                    name = produc.name,
+                    id = produc.id,
+                    description = produc.description,
+                    price = produc.price,
+                    publicationDate = produc.publicationDate,
+                    categoryId = produc.categoryId,
+                    //category = produc.category.CategoryToCategoryBTO()
+                };
+
         }
 
         public static User UserBTOToUser(this UserBTO bto)
