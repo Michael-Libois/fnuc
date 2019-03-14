@@ -20,6 +20,7 @@ namespace fnuc.Controllers
             return Ok(categ.RetrieveAll());
         }
 
+        [Route("product/{id}")]
         [Route("api/product/{id}")]
         public IHttpActionResult GetById(int id)
         {
