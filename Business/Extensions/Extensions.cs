@@ -89,5 +89,23 @@ namespace Business.Extensions
             };
         }
 
+        public static ShoppingBasket ShoppingBasketBTOToShoppingBasket(this ShoppingBasketBTO bto)
+        {
+            return new ShoppingBasket
+            {
+                id = bto.Id,
+                userId = bto.UserId.UserBTOToUser()
+            };
+        }
+
+        public static ShoppingBasketBTO ShoppingBasketToShoppingBasketBTO(this ShoppingBasket basket)
+        {
+            return new ShoppingBasketBTO
+            {
+                UserId = basket.userId.UserToUserBTO(),
+                Id = basket.id
+            };
+        }
+
     }
 }

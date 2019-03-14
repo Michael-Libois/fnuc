@@ -10,7 +10,7 @@ namespace DAL.Entities
     {
 
         public int id { get; set; }
-        public Category userId { get; set; }
+        public User userId { get; set; }
         public virtual ICollection<ShoppingProduct> ShoppingProducts { get; set; }
 
         //     id: number;
