@@ -105,7 +105,7 @@ namespace Business.Extensions
             {
                 UserId = basket.userId,
                 Id = basket.id,
-                shoppingProductBTOs = basket.ShoppingProducts.Select(x => x.ShoppingProductToShoppingProductBTO()).ToList()
+                shoppingProductBTOs = basket.ShoppingProducts?.Select(x => x.ShoppingProductToShoppingProductBTO()).ToList()
             };
         }
 
