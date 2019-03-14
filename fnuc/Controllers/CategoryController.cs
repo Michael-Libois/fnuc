@@ -12,6 +12,7 @@ using Business.Extensions;
 
 namespace fnuc.Controllers
 {
+    [RoutePrefix("api/category")]
     public class CategoryController : ApiController
     {
         //private DatabaseContext context = new DatabaseContext();
@@ -43,12 +44,15 @@ namespace fnuc.Controllers
         //        return Ok(obj);
         //    }
         //}
+        [Route("GetAllWithChildren")]
+        [HttpGet]
         public IHttpActionResult GetAllWithChildren()
         {
             CategoryLogic categ = new CategoryLogic();
             return Ok(categ.RetrieveAllWithChildren());
         }
-
+        [Route("GetAll")]
+        [HttpGet]
         public IHttpActionResult GetAll()
         {
             CategoryLogic categ = new CategoryLogic();
