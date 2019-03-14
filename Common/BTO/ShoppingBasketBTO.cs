@@ -9,7 +9,8 @@ namespace Common.BTO
     public class ShoppingBasketBTO
     {
         public int Id { get; set; }
-        public UserBTO UserId { get; set; }
-        //public List<ShoppingProductBTO> shoppingProductBTOs { get; set; }
+        public int UserId { get; set; }
+        //public UserBTO User { get; set; }
+        public List<ShoppingProductBTO> shoppingProductBTOs { get; set; }
     }
 }

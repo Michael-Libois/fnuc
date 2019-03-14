@@ -22,7 +22,7 @@ namespace DAL.Repository
         public ShoppingProduct Create(ShoppingProduct obj)
         {
             dbContext.ShoppingProducts.Add(obj);
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
             return obj;
         }
 
@@ -30,7 +30,7 @@ namespace DAL.Repository
         {
             ShoppingProduct shoppingProduct = Retrieve(id);
             dbContext.ShoppingProducts.Remove(shoppingProduct);
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
         }
 
         public void Delete(string id)
@@ -63,8 +63,8 @@ namespace DAL.Repository
             ShoppingProduct shoppingProduct = Retrieve(obj.id);
             shoppingProduct.quantity = obj.quantity;
             shoppingProduct.productId = obj.productId;
-            shoppingProduct.ShoppingBasketId = obj.ShoppingBasketId;
-            dbContext.SaveChanges();
+            //shoppingProduct.ShoppingBasketId = obj.ShoppingBasketId;
+            //dbContext.SaveChanges();
 
         }
     }

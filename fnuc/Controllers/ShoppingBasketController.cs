@@ -25,7 +25,10 @@ namespace fnuc.Controllers
 
         public IHttpActionResult Post(ShoppingBasketBTO shoppingBasketBTO)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Not a valid model");
+            }
             ShoppingBasketLogic shoppingBasket = new ShoppingBasketLogic();
             var model = shoppingBasket.Create(shoppingBasketBTO);
 

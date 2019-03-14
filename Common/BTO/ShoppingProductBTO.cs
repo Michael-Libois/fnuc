@@ -10,10 +10,13 @@ namespace Common.BTO
     {
 
         public int Id { get; set; }
-        public ProductBTO ProductId { get; set; }
+        public int ProductId { get; set; }
+        //public ProductBTO ProductId { get; set; }
+
         public int quantity { get; set; }
-        public ShoppingBasketBTO ShoppingBasketId { get; set; }
-        
+        public int ShoppingBasketId { get; set; }
+        //public ShoppingBasketBTO ShoppingBasketId { get; set; }
+
 
     }
 }

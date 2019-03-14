@@ -49,7 +49,7 @@ namespace Business.Extensions
             product.price = bto.price;
             product.publicationDate = bto.publicationDate;
             product.categoryId = bto.categoryId;
-            product.category = bto.category.CategoryBTOToCategory();
+            //product.category = bto.category.CategoryBTOToCategory();
 
 
             return product;
@@ -67,7 +67,7 @@ namespace Business.Extensions
                 price = produc.price,
                 publicationDate = produc.publicationDate,
                 categoryId = produc.categoryId,
-                category = produc.category.CategoryToCategoryBTO()
+                //category = produc.category.CategoryToCategoryBTO()
             };
         }
 
@@ -94,7 +94,8 @@ namespace Business.Extensions
             return new ShoppingBasket
             {
                 id = bto.Id,
-                userId = bto.UserId.UserBTOToUser()
+                userId = bto.UserId
+                //userId = bto.UserId.UserBTOToUser()
             };
         }
 
@@ -102,8 +103,9 @@ namespace Business.Extensions
         {
             return new ShoppingBasketBTO
             {
-                UserId = basket.userId.UserToUserBTO(),
-                Id = basket.id
+                UserId = basket.userId,
+                Id = basket.id,
+                shoppingProductBTOs = basket.ShoppingProducts.Select(x => x.ShoppingProductToShoppingProductBTO()).ToList()
             };
         }
 
@@ -112,9 +114,10 @@ namespace Business.Extensions
             return new ShoppingProduct
             {
                 id = bto.Id,
-                productId = bto.ProductId.ProductBTOToProduct(),
+                productId = bto.ProductId,
                 quantity = bto.quantity,
-                ShoppingBasketId = bto.ShoppingBasketId.ShoppingBasketBTOToShoppingBasket()
+                shoppingBasketId = bto.ShoppingBasketId
+                //ShoppingBasketId = bto.ShoppingBasketId.ShoppingBasketBTOToShoppingBasket()
 
                 
             };
@@ -128,9 +131,9 @@ namespace Business.Extensions
             {
 
                 Id = shoppingProduct.id,
-                ProductId = shoppingProduct.productId.ProductToProductBTO(),
+                ProductId = shoppingProduct.productId,
                 quantity = shoppingProduct.quantity,
-                ShoppingBasketId = shoppingProduct.ShoppingBasketId.ShoppingBasketToShoppingBasketBTO()
+                ShoppingBasketId = shoppingProduct.shoppingBasketId
                 
             };
         }
