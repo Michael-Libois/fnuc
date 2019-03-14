@@ -13,13 +13,14 @@ namespace fnuc.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
-
+        
         public IHttpActionResult GetAll()
         {
             ProductLogic categ = new ProductLogic();
             return Ok(categ.RetrieveAll());
         }
 
+        [Route("api/product/{id}")]
         public IHttpActionResult GetById(int id)
         {
             
@@ -27,6 +28,10 @@ namespace fnuc.Controllers
             return Ok(categ.Retrieve(id));
 
         }
+
+        //TODO : getByName
+        //TODO : getByCategory
+
 
         public IHttpActionResult Post(ProductBTO productBto)
         {
