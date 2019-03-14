@@ -47,14 +47,14 @@ namespace fnuc.Controllers
         //        return Ok(obj);
         //    }
         //}
-        [Route("GetAllWithChildren")]
+        [Route("")]
         [HttpGet]
         public IHttpActionResult GetAllWithChildren()
         {
             CategoryLogic categ = new CategoryLogic();
             return Ok(categ.RetrieveAllWithChildren());
         }
-        [Route("GetAll")]
+        [Route("all")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
