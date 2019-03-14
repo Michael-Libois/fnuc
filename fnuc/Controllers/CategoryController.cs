@@ -9,9 +9,12 @@ using System.Web.Http;
 using Newtonsoft;
 using Newtonsoft.Json;
 using Business.Extensions;
+using System.Web.Http.Cors;
 
 namespace fnuc.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/category")]
     public class CategoryController : ApiController
     {
