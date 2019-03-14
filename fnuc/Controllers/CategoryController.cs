@@ -43,11 +43,19 @@ namespace fnuc.Controllers
         //        return Ok(obj);
         //    }
         //}
+        public IHttpActionResult GetAllWithChildren()
+        {
+            CategoryLogic categ = new CategoryLogic();
+            return Ok(categ.RetrieveAllWithChildren());
+        }
+
         public IHttpActionResult GetAll()
         {
             CategoryLogic categ = new CategoryLogic();
-            return Ok(categ.RetrieveAll());
+            return Ok(categ.RetrieveAllWithoutChildren());
         }
+
+
 
         public IHttpActionResult GetById(int idParent)
         {

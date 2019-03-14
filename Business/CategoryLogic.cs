@@ -61,7 +61,7 @@ namespace Business
         }
 
         //ReadAll
-        public List<CategoryBTO> RetrieveAll()
+        public List<CategoryBTO> RetrieveAllWithChildren()
         {
             UnitOfWork unitOfWork = new UnitOfWork(context);
             List<CategoryBTO> Listbto = new List<CategoryBTO>();
@@ -73,6 +73,39 @@ namespace Business
             }
 
             return Listbto;
+        }
+
+        public List<CategoryBTO> RetrieveAllWithoutChildren()
+        {
+
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            List<CategoryBTO> Listbto = new List<CategoryBTO>();
+
+            foreach (var item in unitOfWork.CategoryRepo.RetrieveAll())
+            {
+                CategoryBTO btoToAdd = item.CategoryToCategoryBTO();
+                Listbto.Add(btoToAdd);
+            }
+
+            return Listbto;
+
+        }
+        public List<CategoryBTO> RetrieveAll()
+        {
+
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            List<CategoryBTO> Listbto = new List<CategoryBTO>();
+
+            foreach (var item in unitOfWork.CategoryRepo.RetrieveAll())
+            {
+                CategoryBTO btoToAdd = this.Retrieve(item.CategoryId);
+                Listbto.Add(btoToAdd);
+            }
+
+            return Listbto;
+
         }
 
 
