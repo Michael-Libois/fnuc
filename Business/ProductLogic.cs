@@ -26,15 +26,6 @@ namespace Business
             return response.ProductToProductBTO();
 
 
-
-            //using (ProductRepo repo = new ProductRepo(context))
-            //{
-            //    //De la Logique... 
-
-            //    repo.Create(bto.ProductBTOToProduct());
-            //}
-
-            //return bto;
         }
 
         //Read
@@ -45,12 +36,7 @@ namespace Business
 
             return unitOfWork.ProductRepo.Retrieve(id).ProductToProductBTO();
             
-            //using (ProductRepo repo = new ProductRepo(context))
-            //{
-            //    //De la Logique... 
-
-            //    return repo.Retrieve(id).ProductToProductBTO();
-            //}
+         
         }
 
         //ReadAll
@@ -69,15 +55,8 @@ namespace Business
 
             return Listbto;
 
-
-
-            //using (ProductRepo repo = new ProductRepo(context))
-            //{
-            //    //De la Logique... 
-            //    return RetrieveAll();
-
-            //}
         }
+
         public List<ProductBTO> RetrieveAllByCateg(int id)
         {
 
@@ -93,18 +72,29 @@ namespace Business
 
             return Listbto;
 
-
-
-            //using (ProductRepo repo = new ProductRepo(context))
-            //{
-            //    //De la Logique... 
-            //    return RetrieveAll();
-
-            //}
         }
-        //Update
 
-        public void Update(ProductBTO existingCateg)
+        public List<ProductBTO> RetrieveAllByName(string name)
+        {
+
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            List<ProductBTO> Listbto = new List<ProductBTO>();
+
+            foreach (var item in unitOfWork.ProductRepo.RetrieveAll().Where(x => x.name == name))
+            {
+                ProductBTO btoToAdd = this.Retrieve(item.id);
+                Listbto.Add(btoToAdd);
+            }
+
+            return Listbto;
+
+        }
+
+
+            //Update
+
+            public void Update(ProductBTO existingCateg)
         {
             UnitOfWork unitOfWork = new UnitOfWork(context);
             unitOfWork.ProductRepo.Update(existingCateg.ProductBTOToProduct());

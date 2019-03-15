@@ -58,6 +58,8 @@ namespace DAL.Repository
             return dbContext.ShoppingProducts.ToList();
         }
 
+
+
         public void Update(ShoppingProduct obj)
         {
             ShoppingProduct shoppingProduct = Retrieve(obj.id);

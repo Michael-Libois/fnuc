@@ -21,6 +21,10 @@ namespace Business
             return unitOfWork.ShoppingProductRepo.Retrieve(id).ShoppingProductToShoppingProductBTO();
         }
 
+
+
+
+
         //RetrieveAll
         public List<ShoppingProductBTO> RetrieveAll()
         {
@@ -35,6 +39,23 @@ namespace Business
             }
             return Listbto;
         }
+
+        //RetrieveShoppingProductByBasketId
+        public List<ShoppingProductBTO> RetrieveAllByShoppinBasketId(int basketId)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            List<ShoppingProductBTO> Listbto = new List<ShoppingProductBTO>();
+
+            foreach (var item in unitOfWork.ShoppingProductRepo.RetrieveAll().Where(x => x.shoppingBasketId == basketId))
+            {
+                ShoppingProductBTO btoToAdd = this.Retrieve(item.id);
+                Listbto.Add(btoToAdd);
+            }
+            return Listbto;
+        }
+
+
 
         //Create
         public ShoppingProductBTO Create(ShoppingProductBTO bto)
