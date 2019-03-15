@@ -70,6 +70,7 @@ namespace Business.Extensions
                     price = produc.price,
                     publicationDate = produc.publicationDate,
                     categoryId = produc.categoryId,
+                    category = produc.category.Name
                     //category = produc.category.CategoryToCategoryBTO()
                 };
 
@@ -97,8 +98,8 @@ namespace Business.Extensions
         {
             return new ShoppingBasket
             {
-                id = bto.Id,
-                userId = bto.UserId
+                id = bto.id,
+                userId = bto.userId
                 //userId = bto.UserId.UserBTOToUser()
             };
         }
@@ -107,9 +108,9 @@ namespace Business.Extensions
         {
             return new ShoppingBasketBTO
             {
-                UserId = basket.userId,
-                Id = basket.id,
-                shoppingProductBTOs = basket.ShoppingProducts?.Select(x => x.ShoppingProductToShoppingProductBTO()).ToList()
+                userId = basket.userId,
+                id = basket.id,
+                shoppingProducts = basket.ShoppingProducts?.Select(x => x.ShoppingProductToShoppingProductBTO()).ToList()
             };
         }
 
@@ -117,13 +118,12 @@ namespace Business.Extensions
         {
             return new ShoppingProduct
             {
-                id = bto.Id,
-                productId = bto.ProductId,
+                id = bto.id,
+                productId = bto.productId,
                 quantity = bto.quantity,
+                //product = bto.Product.ProductBTOToProduct(),
                 shoppingBasketId = bto.ShoppingBasketId
                 //ShoppingBasketId = bto.ShoppingBasketId.ShoppingBasketBTOToShoppingBasket()
-
-                
             };
 
         
@@ -134,11 +134,13 @@ namespace Business.Extensions
             return new ShoppingProductBTO
             {
 
-                Id = shoppingProduct.id,
-                ProductId = shoppingProduct.productId,
+                id = shoppingProduct.id,
+                productId = shoppingProduct.productId,
                 quantity = shoppingProduct.quantity,
-                ShoppingBasketId = shoppingProduct.shoppingBasketId
-                
+                ShoppingBasketId = shoppingProduct.shoppingBasketId,
+                pricePerUnit = shoppingProduct.product.price,
+                name = shoppingProduct.product.name
+
             };
         }
     }

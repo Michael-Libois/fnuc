@@ -31,7 +31,7 @@ namespace fnuc.Controllers
             ShoppingProductLogic shoppingProduct = new ShoppingProductLogic();
             var model = shoppingProduct.Create(shoppingProductBTO);
 
-            return CreatedAtRoute("DefaultApi", new { id = model.Id }, model);
+            return CreatedAtRoute("DefaultApi", new { id = model.id }, model);
         }
 
         public IHttpActionResult Put(ShoppingProductBTO shoppingProductBTO)
@@ -42,7 +42,7 @@ namespace fnuc.Controllers
             }
 
             ShoppingProductLogic shoppingProduct = new ShoppingProductLogic();
-            var existingShoppingProduct = shoppingProduct.Retrieve(shoppingProductBTO.Id);
+            var existingShoppingProduct = shoppingProduct.Retrieve(shoppingProductBTO.id);
 
             if (existingShoppingProduct != null)
             {

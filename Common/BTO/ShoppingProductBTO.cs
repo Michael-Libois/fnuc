@@ -9,9 +9,11 @@ namespace Common.BTO
     public class ShoppingProductBTO
     {
 
-        public int Id { get; set; }
-        public int ProductId { get; set; }
-        //public ProductBTO ProductId { get; set; }
+        public int id { get; set; }
+        public int productId { get; set; }
+        //public ProductBTO Product { get; set; }
+        public decimal pricePerUnit { get; set; }
+        public string name { get; set; }
 
         public int quantity { get; set; }
         public int ShoppingBasketId { get; set; }

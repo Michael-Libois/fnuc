@@ -35,7 +35,7 @@ namespace fnuc.Controllers
             ShoppingBasketLogic shoppingBasket = new ShoppingBasketLogic();
             var model = shoppingBasket.Create(shoppingBasketBTO);
 
-            return CreatedAtRoute("DefaultApi", new { id = model.Id }, model);
+            return CreatedAtRoute("DefaultApi", new { id = model.id }, model);
         }
 
         public IHttpActionResult Delete(int id)
