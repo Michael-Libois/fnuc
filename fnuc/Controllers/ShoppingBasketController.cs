@@ -12,6 +12,7 @@ namespace fnuc.Controllers
 {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    
     public class ShoppingBasketController : ApiController
     {
         public IHttpActionResult GetAll()
@@ -26,6 +27,7 @@ namespace fnuc.Controllers
             return Ok(shoppingBasket.Retrieve(id));
         }
 
+        [Route("api/shopping")]
         public IHttpActionResult Post(ShoppingBasketBTO shoppingBasketBTO)
         {
             if (!ModelState.IsValid)
@@ -35,7 +37,7 @@ namespace fnuc.Controllers
             ShoppingBasketLogic shoppingBasket = new ShoppingBasketLogic();
             var model = shoppingBasket.Create(shoppingBasketBTO);
 
-            return CreatedAtRoute("DefaultApi", new { id = model.id }, model);
+            return Ok(model);
         }
 
         public IHttpActionResult Delete(int id)

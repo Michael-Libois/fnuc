@@ -99,7 +99,9 @@ namespace Business.Extensions
             return new ShoppingBasket
             {
                 id = bto.id,
-                userId = bto.userId
+                userId = bto.userId,
+                ShoppingProducts = bto.shoppingProducts?.Select(x=>x.ShoppingProductBTOToShoppingProduct()).ToList()
+                
                 //userId = bto.UserId.UserBTOToUser()
             };
         }
@@ -139,7 +141,8 @@ namespace Business.Extensions
                 quantity = shoppingProduct.quantity,
                 ShoppingBasketId = shoppingProduct.shoppingBasketId,
                 pricePerUnit = shoppingProduct.product.price,
-                name = shoppingProduct.product.name
+                name = shoppingProduct.product.name,
+                
 
             };
         }

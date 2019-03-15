@@ -45,6 +45,12 @@ namespace Business
 
             UnitOfWork unitOfWork = new UnitOfWork(context);
             var response = unitOfWork.ShoppingBasketRepo.Create(bto.ShoppingBasketBTOToShoppingBasket());
+            foreach (var item in response.ShoppingProducts)
+            {
+                item.product = unitOfWork.ProductRepo.Retrieve(item.productId);
+                //response.ShoppingProducts.Add(item);
+            }
+            //response.ShoppingProducts = unitOfWork.ProductRepo.Retrieve(response.ShoppingProducts);
             unitOfWork.Save();
             return response.ShoppingBasketToShoppingBasketBTO();
         }

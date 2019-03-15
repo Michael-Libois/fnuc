@@ -11,7 +11,7 @@ namespace Common.BTO
 
         public int id { get; set; }
         public int productId { get; set; }
-        //public ProductBTO Product { get; set; }
+        public ProductBTO Product { get; set; }
         public decimal pricePerUnit { get; set; }
         public string name { get; set; }
 
